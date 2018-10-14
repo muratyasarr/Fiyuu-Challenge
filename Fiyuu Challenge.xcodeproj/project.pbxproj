@@ -22,6 +22,9 @@
 		AC0C821B2173B2C0009981D2 /* ProductGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C821A2173B2C0009981D2 /* ProductGroup.swift */; };
 		AC0C821D2173B531009981D2 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C821C2173B531009981D2 /* TableViewDataSource.swift */; };
 		AC0C821F2173BE29009981D2 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C821E2173BE29009981D2 /* ProductTableViewCell.swift */; };
+		AC0C82212173D292009981D2 /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C82202173D292009981D2 /* AddressesViewController.swift */; };
+		AC0C82232173D33C009981D2 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C82222173D33C009981D2 /* AddressTableViewCell.swift */; };
+		AC0C82252173DADE009981D2 /* AddressOnMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C82242173DADE009981D2 /* AddressOnMapViewController.swift */; };
 		F2F2443530282C1B4957CC36 /* Pods_Fiyuu_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B973F9678AA1CB0420FFA15E /* Pods_Fiyuu_Challenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +48,9 @@
 		AC0C821A2173B2C0009981D2 /* ProductGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGroup.swift; sourceTree = "<group>"; };
 		AC0C821C2173B531009981D2 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		AC0C821E2173BE29009981D2 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		AC0C82202173D292009981D2 /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
+		AC0C82222173D33C009981D2 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
+		AC0C82242173DADE009981D2 /* AddressOnMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressOnMapViewController.swift; sourceTree = "<group>"; };
 		B973F9678AA1CB0420FFA15E /* Pods_Fiyuu_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fiyuu_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -106,6 +112,8 @@
 			children = (
 				AC0C81EE21735B00009981D2 /* BrandsViewController.swift */,
 				AC0C821421739940009981D2 /* BrandDetailsViewController.swift */,
+				AC0C82202173D292009981D2 /* AddressesViewController.swift */,
+				AC0C82242173DADE009981D2 /* AddressOnMapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -161,6 +169,7 @@
 			children = (
 				AC0C820C21736CB5009981D2 /* BrandTableViewCell.swift */,
 				AC0C821E2173BE29009981D2 /* ProductTableViewCell.swift */,
+				AC0C82222173D33C009981D2 /* AddressTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -303,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC0C820721736255009981D2 /* NetworkManager.swift in Sources */,
+				AC0C82252173DADE009981D2 /* AddressOnMapViewController.swift in Sources */,
 				AC0C821D2173B531009981D2 /* TableViewDataSource.swift in Sources */,
 				AC0C820D21736CB5009981D2 /* BrandTableViewCell.swift in Sources */,
 				AC0C82192173B201009981D2 /* Product.swift in Sources */,
@@ -310,7 +320,9 @@
 				AC0C821F2173BE29009981D2 /* ProductTableViewCell.swift in Sources */,
 				AC0C81EF21735B00009981D2 /* BrandsViewController.swift in Sources */,
 				AC0C81ED21735B00009981D2 /* AppDelegate.swift in Sources */,
+				AC0C82212173D292009981D2 /* AddressesViewController.swift in Sources */,
 				AC0C820B21736AF1009981D2 /* Address.swift in Sources */,
+				AC0C82232173D33C009981D2 /* AddressTableViewCell.swift in Sources */,
 				AC0C821521739940009981D2 /* BrandDetailsViewController.swift in Sources */,
 				AC0C82132173976C009981D2 /* FiyuuResponseModel.swift in Sources */,
 				AC0C821B2173B2C0009981D2 /* ProductGroup.swift in Sources */,

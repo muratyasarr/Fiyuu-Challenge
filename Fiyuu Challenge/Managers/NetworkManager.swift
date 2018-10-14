@@ -177,3 +177,49 @@ extension BrandsEndpoint: Endpoint {
         }
     }
 }
+
+enum AddressEndpoint: Endpoint {
+    case all
+}
+
+extension AddressEndpoint {
+    var scheme: String {
+        return "https"
+    }
+    
+    var host: String {
+        return "api-dev.fiyuu.com.tr"
+    }
+    
+    var request: URLRequest? {
+        switch self {
+        case .all:
+            return request(forPath: "/customer/address/scan-2.0")
+        }
+    }
+    
+    var httpMethod: String {
+        switch self {
+        case .all:
+            return "POST"
+        }
+    }
+    
+    var requestHeaders: [String: String]? {
+        let defaultHeaders = [
+            "token": "XpcLEEIMqSuRiDlCkww0sww82NTx5fyRE3y5UOxA3mnSlA4/ySgTpAAEa67fKuBcoiLmjO3K8upOmZxNp2IXIxZSCf6twi67bOsUb5DLAsvi1OXPhLkwbL7pzYwb9vZc/Vlhcr+czKIz7HUpQpH8JKiQUw=="
+        ]
+        switch self {
+        case .all:
+            return defaultHeaders
+        }
+    }
+    
+    var queryItems: [URLQueryItem]? {
+        return nil
+    }
+    
+    var requestBody: Data? {
+        return nil
+    }
+}

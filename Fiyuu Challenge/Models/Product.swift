@@ -13,7 +13,7 @@ class Product: Codable {
     var name: String?
     var productGroupId: String?
     var price: Int?
-    var displayOrder: Int?
+    var displayOrder: Int = 0
     var maximumQuantity: Int?
     var imagePaths: [String]?
     var summary: String?

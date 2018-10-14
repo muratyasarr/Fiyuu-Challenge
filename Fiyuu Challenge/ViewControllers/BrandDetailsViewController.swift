@@ -13,7 +13,6 @@ class BrandDetailsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.estimatedRowHeight = UITableView.automaticDimension
-            tableView.estimatedRowHeight = 120
             if let brand = self.brand {
                 self.dataSources = SectionedTableViewDataSource(dataSources: [
                     TableViewDataSource.make(for: [brand])
@@ -48,7 +47,7 @@ class BrandDetailsViewController: UIViewController {
                 if let brand = self.brand, let products = self.brand?.products {
                     self.dataSources = SectionedTableViewDataSource(dataSources: [
                         TableViewDataSource.make(for: [brand]),
-                        TableViewDataSource.make(for: products)
+                        TableViewDataSource.make(for: products.sorted(by: {$0.displayOrder < $1.displayOrder})) // Better ordering is also possible by sorting relative to the product groups' displayOrder as well.
                     ])
                     self.tableView.dataSource = self.dataSources
                 }

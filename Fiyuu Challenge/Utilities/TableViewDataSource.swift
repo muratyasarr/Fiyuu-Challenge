@@ -93,3 +93,15 @@ extension TableViewDataSource where Model == Product, CellType == ProductTableVi
         })
     }
 }
+
+extension TableViewDataSource where Model == Address, CellType == AddressTableViewCell {
+    static func make(for addresses: [Address]) -> UITableViewDataSource {
+        return TableViewDataSource(models: addresses, cellConfigurator: { (address, addressCell) in
+            addressCell.addressNameLabel.text = address.name ?? "Adsız"
+            addressCell.addressDetailsLabel.text = address.details
+            if let county = address.county, let city = address.city {
+                addressCell.addressCityCountyLabel.text = county + " / " + city
+            }
+        })
+    }
+}
