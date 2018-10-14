@@ -6,5 +6,6 @@ target 'Fiyuu Challenge' do
   use_frameworks!
 
   pod 'Kingfisher', '~> 4.0'
+  pod 'SVProgressHUD'
 
 end
