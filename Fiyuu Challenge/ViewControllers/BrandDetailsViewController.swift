@@ -10,12 +10,19 @@ import UIKit
 
 class BrandDetailsViewController: UIViewController {
     
-    enum TableViewSectionIndexPaths: Int {
-        case HeaderSection = 0
-        case ProductsSection
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.estimatedRowHeight = UITableView.automaticDimension
+            tableView.estimatedRowHeight = 120
+            if let brand = self.brand {
+                self.dataSources = SectionedTableViewDataSource(dataSources: [
+                    TableViewDataSource.make(for: [brand])
+                    ])
+                self.tableView.dataSource = self.dataSources
+                tableView.reloadData() // Reload on first opening with the initial brand model to make the lazy loading effect.
+            }
+        }
     }
-    
-    @IBOutlet weak var tableView: UITableView!
     
     var brand: Brand?
     

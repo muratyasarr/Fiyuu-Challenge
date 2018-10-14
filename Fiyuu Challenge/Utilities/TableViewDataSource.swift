@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Reusable Data Source Models
 class TableViewDataSource<Model, CellType: UITableViewCell>: NSObject, UITableViewDataSource {
     
     typealias CellConfigurator = (Model, CellType) -> Void
@@ -26,6 +27,7 @@ class TableViewDataSource<Model, CellType: UITableViewCell>: NSObject, UITableVi
         let model = models[indexPath.row]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CellType.self), for: indexPath) as? CellType else { return UITableViewCell() }
         cellConfigurator(model, cell)
+        cell.layoutIfNeeded()
         return cell
     }
 }
@@ -55,8 +57,7 @@ class SectionedTableViewDataSource: NSObject, UITableViewDataSource {
     }
 }
 
-
-
+// Reusable Data Sources
 extension TableViewDataSource where Model == Brand, CellType == BrandTableViewCell {
     static func make(for brands: [Brand]) -> UITableViewDataSource {
         return TableViewDataSource(models: brands, cellConfigurator: { (brand, brandCell) in
@@ -73,6 +74,7 @@ extension TableViewDataSource where Model == Brand, CellType == BrandTableViewCe
     }
 }
 
+// Reusable Data Sources
 extension TableViewDataSource where Model == Product, CellType == ProductTableViewCell {
     static func make(for products: [Product]) -> UITableViewDataSource {
         return TableViewDataSource(models: products, cellConfigurator: { (product, productCell) in
