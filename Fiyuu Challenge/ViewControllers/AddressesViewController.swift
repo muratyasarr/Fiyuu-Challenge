@@ -47,6 +47,7 @@ class AddressesViewController: UIViewController {
 
 extension AddressesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let address = addresses[indexPath.row]
         guard let addressOnMapViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: AddressOnMapViewController.self)) as? AddressOnMapViewController else { return }
         addressOnMapViewController.address = address
