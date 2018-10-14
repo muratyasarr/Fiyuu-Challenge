@@ -12,5 +12,11 @@ class BrandTableViewCell: UITableViewCell {
     
     @IBOutlet weak var brandCoverImageView: UIImageView!
     @IBOutlet weak var brandNameLabel: UILabel!
-
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        brandNameLabel.text = nil
+        brandCoverImageView.image = UIImage(named: "restaurant")
+        brandCoverImageView.kf.cancelDownloadTask()
+    }
 }

@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BrandsViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.estimatedRowHeight = UITableView.automaticDimension
+            tableView.estimatedRowHeight = 120
+        }
+    }
     
     var brands: [Brand] = [] {
         didSet {
@@ -20,24 +26,24 @@ class BrandsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetworkManager().request(BrandsEndpoint.all) { (result: Result<FiyuuBrandsResponseModel>) in
+        prepareUI()
+        prepareData()
+    }
+    
+    private func prepareUI() {
+        title = "Restoranlar"
+    }
+    
+    private func prepareData() {
+        NetworkManager().request(BrandsEndpoint.all) { [weak self] (result: Result<FiyuuResponseModel<[Brand]>>) in
             switch result {
             case .success(let result):
-                self.brands = result.data ?? []
-                print("result: \(result)")
+                guard let data = result.data else { return }
+                self?.brands = data
             case .error(let error):
                 print("error: \(error.localizedDescription)")
             }
         }
-        
-//        NetworkManager().request(BrandsEndpoint.details(brandId: "f5b049b1-c3ba-47b4-9198-ed29a33ee642")) { (result: Result<FiyuuResponseModel>) in
-//            switch result {
-//            case .success(let result):
-//                print("result: \(result)")
-//            case .error(let error):
-//                print("error: \(error.localizedDescription)")
-//            }
-//        }
     }
 
 
@@ -51,6 +57,23 @@ extension BrandsViewController: UITableViewDataSource {
         guard let brandCell = tableView.dequeueReusableCell(withIdentifier: String(describing: BrandTableViewCell.self), for: indexPath) as? BrandTableViewCell else { return UITableViewCell() }
         let brand = brands[indexPath.row]
         brandCell.brandNameLabel.text = brand.name
+        if let imagePath = brand.imageURLPath, let imageURL = URL(string: imagePath) {
+            brandCell.brandCoverImageView.kf.setImage(with: imageURL, placeholder: UIImage(named: "restaurant"), options: nil, progressBlock: nil) { (_, error, _, _) in
+                guard error == nil else {
+                    brandCell.brandCoverImageView.image = UIImage(named: "restaurant")
+                    return
+                }
+            }
+        }
         return brandCell
+    }
+}
+
+extension BrandsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let brand = brands[indexPath.row]
+        guard let brandDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: String(describing: BrandDetailsViewController.self)) as? BrandDetailsViewController else { return }
+        brandDetailsViewController.brand = brand
+        self.navigationController?.pushViewController(brandDetailsViewController, animated: true)
     }
 }

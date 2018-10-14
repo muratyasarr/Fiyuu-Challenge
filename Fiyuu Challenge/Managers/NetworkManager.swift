@@ -70,7 +70,6 @@ struct Parser {
     func json<T: Decodable>(data: Data, completion: @escaping ResultCallback<T>) {
         do {
             let fiyuuResponseModel = try? jsonDecoder.decode(T.self, from: data)
-            print("fiyuuResponseModel: \(fiyuuResponseModel)")
             OperationQueue.main.addOperation { completion(.success(fiyuuResponseModel!)) }
         } catch let parseError {
             OperationQueue.main.addOperation { completion(.error(parseError)) }
@@ -85,6 +84,7 @@ protocol Endpoint {
     var httpMethod: String { get }
     var queryItems: [URLQueryItem]? { get }
     var requestHeaders: [String: String]? { get }
+    var requestBody: Data? { get }
     var scheme: String { get }
     var host: String { get }
 }
@@ -99,6 +99,7 @@ extension Endpoint {
         guard let url = urlComponents.url else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
+        request.httpBody = requestBody
         if let headers = requestHeaders {
             for (key,value) in headers {
                 request.setValue(value, forHTTPHeaderField: key)
@@ -162,8 +163,17 @@ extension BrandsEndpoint: Endpoint {
             return defaultHeaders
         case .details(brandId: _):
             return defaultHeaders
-        default:
-            return defaultHeaders
+        }
+    }
+    
+    var requestBody: Data? {
+        switch self {
+        case .all:
+            return nil
+        case .details(let brandId):
+            let bodyDict = ["brandId": brandId]
+            guard let bodyData = try? JSONSerialization.data(withJSONObject: bodyDict, options: .prettyPrinted) else { return nil }
+            return bodyData
         }
     }
 }

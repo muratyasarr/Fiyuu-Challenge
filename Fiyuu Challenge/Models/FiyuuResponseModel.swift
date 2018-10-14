@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FiyuuBrandsResponseModel: Codable {
+class FiyuuResponseModel<T: Codable>: Codable {
     var code: String?
-    var data: [Brand]?
+    var data: T?
 }
