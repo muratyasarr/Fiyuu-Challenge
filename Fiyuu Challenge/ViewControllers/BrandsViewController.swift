@@ -15,14 +15,19 @@ class BrandsViewController: UIViewController {
         didSet {
             tableView.estimatedRowHeight = UITableView.automaticDimension
             tableView.estimatedRowHeight = 120
+            tableView.dataSource = self.dataSource
         }
     }
     
     var brands: [Brand] = [] {
         didSet {
+            self.dataSource = TableViewDataSource.make(for: self.brands)
+            self.tableView.dataSource = self.dataSource
             self.tableView.reloadData()
         }
     }
+    
+    var dataSource: UITableViewDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,36 +41,15 @@ class BrandsViewController: UIViewController {
     
     private func prepareData() {
         NetworkManager().request(BrandsEndpoint.all) { [weak self] (result: Result<FiyuuResponseModel<[Brand]>>) in
+            guard let self = self else { return }
             switch result {
             case .success(let result):
                 guard let data = result.data else { return }
-                self?.brands = data
+                self.brands = data
             case .error(let error):
                 print("error: \(error.localizedDescription)")
             }
         }
-    }
-
-
-}
-
-extension BrandsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return brands.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let brandCell = tableView.dequeueReusableCell(withIdentifier: String(describing: BrandTableViewCell.self), for: indexPath) as? BrandTableViewCell else { return UITableViewCell() }
-        let brand = brands[indexPath.row]
-        brandCell.brandNameLabel.text = brand.name
-        if let imagePath = brand.imageURLPath, let imageURL = URL(string: imagePath) {
-            brandCell.brandCoverImageView.kf.setImage(with: imageURL, placeholder: UIImage(named: "restaurant"), options: nil, progressBlock: nil) { (_, error, _, _) in
-                guard error == nil else {
-                    brandCell.brandCoverImageView.image = UIImage(named: "restaurant")
-                    return
-                }
-            }
-        }
-        return brandCell
     }
 }
 

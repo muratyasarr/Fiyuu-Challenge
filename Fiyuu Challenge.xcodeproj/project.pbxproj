@@ -18,6 +18,10 @@
 		AC0C820D21736CB5009981D2 /* BrandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C820C21736CB5009981D2 /* BrandTableViewCell.swift */; };
 		AC0C82132173976C009981D2 /* FiyuuResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C82122173976B009981D2 /* FiyuuResponseModel.swift */; };
 		AC0C821521739940009981D2 /* BrandDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C821421739940009981D2 /* BrandDetailsViewController.swift */; };
+		AC0C82192173B201009981D2 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C82182173B201009981D2 /* Product.swift */; };
+		AC0C821B2173B2C0009981D2 /* ProductGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C821A2173B2C0009981D2 /* ProductGroup.swift */; };
+		AC0C821D2173B531009981D2 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C821C2173B531009981D2 /* TableViewDataSource.swift */; };
+		AC0C821F2173BE29009981D2 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C821E2173BE29009981D2 /* ProductTableViewCell.swift */; };
 		F2F2443530282C1B4957CC36 /* Pods_Fiyuu_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B973F9678AA1CB0420FFA15E /* Pods_Fiyuu_Challenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +41,10 @@
 		AC0C820C21736CB5009981D2 /* BrandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTableViewCell.swift; sourceTree = "<group>"; };
 		AC0C82122173976B009981D2 /* FiyuuResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiyuuResponseModel.swift; sourceTree = "<group>"; };
 		AC0C821421739940009981D2 /* BrandDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandDetailsViewController.swift; sourceTree = "<group>"; };
+		AC0C82182173B201009981D2 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		AC0C821A2173B2C0009981D2 /* ProductGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGroup.swift; sourceTree = "<group>"; };
+		AC0C821C2173B531009981D2 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		AC0C821E2173BE29009981D2 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		B973F9678AA1CB0420FFA15E /* Pods_Fiyuu_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fiyuu_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,6 +113,7 @@
 		AC0C820021736158009981D2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AC0C821C2173B531009981D2 /* TableViewDataSource.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -133,6 +142,8 @@
 				AC0C82122173976B009981D2 /* FiyuuResponseModel.swift */,
 				AC0C820821736A35009981D2 /* Brand.swift */,
 				AC0C820A21736AF1009981D2 /* Address.swift */,
+				AC0C82182173B201009981D2 /* Product.swift */,
+				AC0C821A2173B2C0009981D2 /* ProductGroup.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -149,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				AC0C820C21736CB5009981D2 /* BrandTableViewCell.swift */,
+				AC0C821E2173BE29009981D2 /* ProductTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -291,13 +303,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC0C820721736255009981D2 /* NetworkManager.swift in Sources */,
+				AC0C821D2173B531009981D2 /* TableViewDataSource.swift in Sources */,
 				AC0C820D21736CB5009981D2 /* BrandTableViewCell.swift in Sources */,
+				AC0C82192173B201009981D2 /* Product.swift in Sources */,
 				AC0C820921736A35009981D2 /* Brand.swift in Sources */,
+				AC0C821F2173BE29009981D2 /* ProductTableViewCell.swift in Sources */,
 				AC0C81EF21735B00009981D2 /* BrandsViewController.swift in Sources */,
 				AC0C81ED21735B00009981D2 /* AppDelegate.swift in Sources */,
 				AC0C820B21736AF1009981D2 /* Address.swift in Sources */,
 				AC0C821521739940009981D2 /* BrandDetailsViewController.swift in Sources */,
 				AC0C82132173976C009981D2 /* FiyuuResponseModel.swift in Sources */,
+				AC0C821B2173B2C0009981D2 /* ProductGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

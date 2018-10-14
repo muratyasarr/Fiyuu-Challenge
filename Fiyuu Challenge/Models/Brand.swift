@@ -13,11 +13,16 @@ class Brand: Codable {
     var name: String?
     var imageURLPath: String?
     var address: Address?
+    var productGroups: [ProductGroup]?
+    var products: [Product]?
     
     enum CodingKeys: String, CodingKey {
         case id
         case name
-        case address
         case imageURLPath = "image"
+        case address
+        case productGroups
+        case products
+        
     }
 }
