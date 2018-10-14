@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		AC0C81ED21735B00009981D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C81EC21735B00009981D2 /* AppDelegate.swift */; };
-		AC0C81EF21735B00009981D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C81EE21735B00009981D2 /* ViewController.swift */; };
+		AC0C81EF21735B00009981D2 /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C81EE21735B00009981D2 /* BrandsViewController.swift */; };
 		AC0C81F221735B00009981D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC0C81F021735B00009981D2 /* Main.storyboard */; };
 		AC0C81F421735B01009981D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0C81F321735B01009981D2 /* Assets.xcassets */; };
 		AC0C81F721735B01009981D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC0C81F521735B01009981D2 /* LaunchScreen.storyboard */; };
+		AC0C820721736255009981D2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C820621736255009981D2 /* NetworkManager.swift */; };
+		AC0C820921736A35009981D2 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C820821736A35009981D2 /* Brand.swift */; };
+		AC0C820B21736AF1009981D2 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C820A21736AF1009981D2 /* Address.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC0C81E921735B00009981D2 /* Fiyuu Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fiyuu Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0C81EC21735B00009981D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC0C81EE21735B00009981D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AC0C81EE21735B00009981D2 /* BrandsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
 		AC0C81F121735B00009981D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC0C81F321735B01009981D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC0C81F621735B01009981D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC0C81F821735B01009981D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC0C820621736255009981D2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		AC0C820821736A35009981D2 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		AC0C820A21736AF1009981D2 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,7 @@
 		AC0C81FE21736148009981D2 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				AC0C820621736255009981D2 /* NetworkManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -76,7 +83,7 @@
 		AC0C81FF2173614F009981D2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				AC0C81EE21735B00009981D2 /* ViewController.swift */,
+				AC0C81EE21735B00009981D2 /* BrandsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -109,6 +116,8 @@
 		AC0C820321736189009981D2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AC0C820821736A35009981D2 /* Brand.swift */,
+				AC0C820A21736AF1009981D2 /* Address.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -199,8 +208,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC0C81EF21735B00009981D2 /* ViewController.swift in Sources */,
+				AC0C820721736255009981D2 /* NetworkManager.swift in Sources */,
+				AC0C820921736A35009981D2 /* Brand.swift in Sources */,
+				AC0C81EF21735B00009981D2 /* BrandsViewController.swift in Sources */,
 				AC0C81ED21735B00009981D2 /* AppDelegate.swift in Sources */,
+				AC0C820B21736AF1009981D2 /* Address.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
