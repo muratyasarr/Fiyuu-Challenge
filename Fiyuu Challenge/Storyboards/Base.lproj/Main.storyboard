@@ -21,13 +21,37 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="196" id="wcU-Vt-QCW">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BrandTableViewCell" rowHeight="196" id="wcU-Vt-QCW" customClass="BrandTableViewCell" customModule="Fiyuu_Challenge" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="196"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wcU-Vt-QCW" id="9gY-3s-16E">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="195.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vrx-d7-bI9">
+                                                    <rect key="frame" x="16" y="16" width="343" height="124.5"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jH-id-J4Y">
+                                                    <rect key="frame" x="15" y="148.5" width="345" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2jH-id-J4Y" secondAttribute="bottom" constant="16" id="Ewt-JF-EIN"/>
+                                                <constraint firstItem="2jH-id-J4Y" firstAttribute="top" secondItem="vrx-d7-bI9" secondAttribute="bottom" constant="8" id="PaL-et-MTI"/>
+                                                <constraint firstAttribute="trailing" secondItem="vrx-d7-bI9" secondAttribute="trailing" constant="16" id="cid-qh-Adb"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2jH-id-J4Y" secondAttribute="trailing" id="g2a-Mj-UAH"/>
+                                                <constraint firstItem="vrx-d7-bI9" firstAttribute="leading" secondItem="9gY-3s-16E" secondAttribute="leading" constant="16" id="hDD-jp-oT0"/>
+                                                <constraint firstItem="vrx-d7-bI9" firstAttribute="top" secondItem="9gY-3s-16E" secondAttribute="top" constant="16" id="jRd-QS-4wc"/>
+                                                <constraint firstItem="2jH-id-J4Y" firstAttribute="leading" secondItem="9gY-3s-16E" secondAttribute="leadingMargin" id="xL3-JV-SDp"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="brandCoverImageView" destination="vrx-d7-bI9" id="2lX-Rc-Qut"/>
+                                            <outlet property="brandNameLabel" destination="2jH-id-J4Y" id="vnQ-Ry-buZ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

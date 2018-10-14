@@ -48,7 +48,7 @@ class NetworkManager: WebserviceProtocol {
         
         
         let task = urlSession.dataTask(with: request) { (data, response, error) in
-            
+            debugPrint([request, response])
             if let error = error {
                 OperationQueue.main.addOperation({ completion(.error(error)) })
                 return
@@ -67,12 +67,11 @@ class NetworkManager: WebserviceProtocol {
 
 struct Parser {
     let jsonDecoder = JSONDecoder()
-    
     func json<T: Decodable>(data: Data, completion: @escaping ResultCallback<T>) {
         do {
-            let result: T = try jsonDecoder.decode(T.self, from: data)
-            OperationQueue.main.addOperation { completion(.success(result)) }
-            
+            let fiyuuResponseModel = try? jsonDecoder.decode(T.self, from: data)
+            print("fiyuuResponseModel: \(fiyuuResponseModel)")
+            OperationQueue.main.addOperation { completion(.success(fiyuuResponseModel!)) }
         } catch let parseError {
             OperationQueue.main.addOperation { completion(.error(parseError)) }
         }
@@ -85,6 +84,7 @@ protocol Endpoint {
     var request: URLRequest? { get }
     var httpMethod: String { get }
     var queryItems: [URLQueryItem]? { get }
+    var requestHeaders: [String: String]? { get }
     var scheme: String { get }
     var host: String { get }
 }
@@ -97,7 +97,14 @@ extension Endpoint {
         urlComponents.path = path
         urlComponents.queryItems = queryItems
         guard let url = urlComponents.url else { return nil }
-        return URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.httpMethod = httpMethod
+        if let headers = requestHeaders {
+            for (key,value) in headers {
+                request.setValue(value, forHTTPHeaderField: key)
+            }
+        }
+        return request
     }
 }
 
@@ -136,15 +143,27 @@ extension BrandsEndpoint: Endpoint {
     }
     
     var queryItems: [URLQueryItem]? {
-        let defaultQueryItems = [
-        URLQueryItem(name: "token", value: "XpcLEEIMqSuRiDlCkww0sww82NTx5fyRE3y5UOxA3mnSlA4/ySgTpAAEa67fKuBcoiLmjO3K8upOmZxNp2IXIxZSCf6twi67bOsUb5DLAsvi1OXPhLkwbL7pzYwb9vZc/Vlhcr+czKIz7HUpQpH8JKiQUw==")
-        ]
+        let defaultQueryItems: [URLQueryItem] = []
         switch self {
         case .details(let brandId):
             let detailsQueryItems = defaultQueryItems + [URLQueryItem(name: "brandId", value: brandId)]
             return detailsQueryItems
         case .all:
             return defaultQueryItems
+        }
+    }
+    
+    var requestHeaders: [String: String]? {
+        let defaultHeaders = [
+            "token": "XpcLEEIMqSuRiDlCkww0sww82NTx5fyRE3y5UOxA3mnSlA4/ySgTpAAEa67fKuBcoiLmjO3K8upOmZxNp2IXIxZSCf6twi67bOsUb5DLAsvi1OXPhLkwbL7pzYwb9vZc/Vlhcr+czKIz7HUpQpH8JKiQUw=="
+        ]
+        switch self {
+        case .all:
+            return defaultHeaders
+        case .details(brandId: _):
+            return defaultHeaders
+        default:
+            return defaultHeaders
         }
     }
 }
