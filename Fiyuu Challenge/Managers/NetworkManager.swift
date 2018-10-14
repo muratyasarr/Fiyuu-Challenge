@@ -8,8 +8,6 @@
 
 import Foundation
 
-import UIKit
-
 // Types
 enum Result<T> {
     case success(T)
@@ -48,7 +46,6 @@ class NetworkManager: WebserviceProtocol {
         
         
         let task = urlSession.dataTask(with: request) { (data, response, error) in
-            debugPrint([request, response])
             if let error = error {
                 OperationQueue.main.addOperation({ completion(.error(error)) })
                 return
@@ -109,7 +106,7 @@ extension Endpoint {
     }
 }
 
-// BrandsEndpoint
+// MARK: - BrandsEndpoint
 enum BrandsEndpoint {
     case all
     case details(brandId: String)
@@ -178,6 +175,7 @@ extension BrandsEndpoint: Endpoint {
     }
 }
 
+// MARK: - AddressEndpoint
 enum AddressEndpoint: Endpoint {
     case all
 }

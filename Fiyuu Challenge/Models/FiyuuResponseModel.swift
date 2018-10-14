@@ -8,6 +8,7 @@
 
 import Foundation
 
+// To connect with multiple API's and adjust acc. to their response models.
 class FiyuuResponseModel<T: Codable>: Codable {
     var code: String?
     var data: T?
